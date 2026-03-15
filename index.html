@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <span>To-Do LIst</span>
+            </div>
+            <div class="header-controls">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="clear-all" class="clear-btn">
+                    <i class="fas fa-trash"></i>
+                    Clear All
+                </button>
+            </div>
+        </header>
+
+        <!-- ADD TASK -->
+        <div class="add-task glass">
+            <input type="text" id="task-input" placeholder="What needs to be done?" maxlength="100">
+            <button id="add-btn">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <!-- FILTERS & STATS -->
+        <div class="controls glass">
+            <div class="filters">
+                <button data-filter="all" class="filter-btn active">All</button>
+                <button data-filter="pending" class="filter-btn">Pending</button>
+                <button data-filter="completed" class="filter-btn">Completed</button>
+            </div>
+            
+            <div class="progress-info">
+                <div class="counter">
+                    <span id="task-count">0</span> tasks
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="fill"></div>
+                </div>
+                <span id="progress-text">0%</span>
+            </div>
+        </div>
+
+        <!-- TASK LIST -->
+        <div class="task-section glass">
+            <ul id="task-list" class="task-list"></ul>
+            <div id="empty-state" class="empty-state">
+                <i class="fas fa-check-circle"></i>
+                <p>No tasks yet.<br>Add one above!</p>
+            </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="dashboard glass">
+            <h2 class="dashboard-title">
+                <i class="fas fa-chart-pie"></i>
+                Productivity Dashboard
+            </h2>
+            <div class="charts-grid">
+                <!-- Pie Chart -->
+                <div class="chart-card">
+                    <h3>Completion</h3>
+                    <canvas id="pie-chart"></canvas>
+                </div>
+                
+                <!-- Bar Chart -->
+                <div class="chart-card">
+                    <h3>Created per Day</h3>
+                    <canvas id="bar-chart"></canvas>
+                </div>
+                
+                <!-- Line Chart -->
+                <div class="chart-card">
+                    <h3>Completion Trend</h3>
+                    <canvas id="line-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content glass">
+            <h3>Edit Task</h3>
+            <input type="text" id="edit-input" maxlength="100">
+            <div class="modal-buttons">
+                <button id="cancel-edit">Cancel</button>
+                <button id="save-edit">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
